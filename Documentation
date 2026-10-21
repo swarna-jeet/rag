@@ -1,0 +1,38 @@
+RAG- Retrival Augmented Generation
+Providing internal knowledge base to the llm for generating output without the need for fine-tune or retrain the model
+saves money for finetune the model
+Reduce halucinating
+
+#Pipelines
+-data ingestion pipeline
+-retrival pipeline
+
+
+#Flow
+
+DOCUMENT PROCESSING (INDEXING)
+==============================
+
++-----------+    +-------------+    +-------------+    +----------------+
+| Documents |--->| Text        |--->| Embedding   |--->| Vector         |
+|           |    | Chunking    |    | Model       |    | Database       |
++-----------+    +-------------+    +-------------+    +----------------+
+                                                              |
+                                                              v
+QUERY PROCESSING                                             |
+================                                             |
+                                                             |
++-------------+    +-------------+    +----------------+      |
+| User Query  |--->| Query       |--->| Retrieve       |<-----+
+|             |    | Embedding   |    | Relevant Docs  |
++-------------+    +-------------+    +----------------+
+                                            |
+                                            v
+                    +----------------+    +-------------+    +-------------+
+                    | Build Prompt   |--->| LLM         |--->| Final       |
+                    | Query + Context|    | Generation  |    | Answer      |
+                    +----------------+    +-------------+    +-------------+
+
+
+
+langchain langchain-community langchain_text_splitters langchain_openai  langchain_chroma python_dotenv
